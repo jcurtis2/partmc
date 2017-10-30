@@ -96,7 +96,9 @@ contains
        return
     end if
 
-    call assert(867444847, new_length >= aero_info_array%n_item)
+!    call assert(867444846, new_length >= aero_info_array%n_item)
+    call assert(867444846, new_length >= &
+         aero_info_array_n_item(aero_info_array))
     allocate(new_items(new_length))
     do i = 1,aero_info_array%n_item
        new_items(i) = aero_info_array%aero_info(i)
