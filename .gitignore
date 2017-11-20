@@ -10,4 +10,6 @@ doc/html/
 doc/partmc_modules.gv
 doc/partmc_modules.pdf
 scenarios/1_urban_plume/out/
-scenarios/2_urban_plume2/out/
+scenarios/2_urban_plume2/out/a
+*.o
+*.mod
