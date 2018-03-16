@@ -556,8 +556,12 @@ contains
     !> Return offset from mean for the 95% confidence interval.
     real(kind=dp) :: conf_95_offset
 
+#ifdef PMC_USE_WRF
+    conf_95_offset = 0.0d0
+#else
     conf_95_offset = student_t_95_coeff(n_sample) * sqrt(var) &
          / sqrt(real(n_sample, kind=dp))
+#endif
 
   end function conf_95_offset
 
