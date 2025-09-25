@@ -1186,6 +1186,8 @@ GENERATE_HTML          = YES
 
 HTML_OUTPUT            = html
 
+SEARCHENGINE = YES
+
 # The HTML_FILE_EXTENSION tag can be used to specify the file extension for each
 # generated HTML page (for example: .htm, .php, .asp).
 # The default value is: .html.
