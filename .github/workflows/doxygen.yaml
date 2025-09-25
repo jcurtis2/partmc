@@ -14,7 +14,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Generate and Deploy Doxygen Docs
-        uses: AgarwalSaurav/ghaction-doxygen-ghpages@v2
+        uses: AgarwalSaurav/ghaction-doxygen-ghpages@v2.2.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           working-directory: ./doc 
