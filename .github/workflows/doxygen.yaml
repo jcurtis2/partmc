@@ -11,11 +11,19 @@ jobs:
       contents: write
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4
       - name: Generate and Deploy Doxygen Docs
-        uses: DenverCoder1/doxygen-github-pages-action@v2.0.0
+        uses: AgarwalSaurav/ghaction-doxygen-ghpages@release/v2
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          config_file: doc/Doxyfile
-          folder: html
+          working-directory: ./doc
+          doxyfile-path: Doxyfile
+          html-output-folder: html
           branch: gh-pages
+#        uses: DenverCoder1/doxygen-github-pages-action@v2.0.0
+#        with:
+#          github_token: ${{ secrets.GITHUB_TOKEN }}
+#          config_file: doc/Doxyfile
+#          folder: html
+#          branch: gh-pages
