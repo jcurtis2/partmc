@@ -1,29 +1,24 @@
-name: Deploy Doxygen Docs
+name: CI
 
-on:
-  push:
-    branches: [doxygen]
+on: [push, pull_request]
 
 jobs:
-  deploy:
+  build:
+
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Generate and Deploy Doxygen Docs
-        uses: AgarwalSaurav/ghaction-doxygen-ghpages@release/v2
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          working-directory: ./doc
-          doxyfile-path: Doxyfile
-          html-output-folder: html
-          branch: gh-pages
-#        uses: DenverCoder1/doxygen-github-pages-action@v2.0.0
-#        with:
-#          github_token: ${{ secrets.GITHUB_TOKEN }}
-#          config_file: doc/Doxyfile
-#          folder: html
-#          branch: gh-pages
+    - uses: actions/checkout@v1
+    - name: Build the testing docker image
+      run: docker build -t partmc-doc -f Dockerfile.doc .
+    - name: Run container to generate docs
+      run: docker run --name partmc-doc-container partmc-doc
+    - name: Copy docs from container to local workspace
+      run: docker cp partmc-doc-container:/partmc/doc/html ./docs/html
+    - name: Deploy to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+         branch: gh-pages
+         folder: docs/html
+    - name: Clean up container
+      run: docker rm partmc-doc-container
