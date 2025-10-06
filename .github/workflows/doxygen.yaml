@@ -18,6 +18,8 @@ jobs:
       run: docker build -t partmc-doc -f Dockerfile.doc .
     - name: Run container to generate docs
       run: docker run --name partmc-doc-container partmc-doc
+    - name: Create docs directory
+      run: mkdir -p docs
     - name: Copy docs from container to local workspace
       run: docker cp partmc-doc-container:/partmc/doc/html ./docs/html
     - name: Deploy to GitHub Pages
