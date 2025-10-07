@@ -1,4 +1,4 @@
-![PartMC](https://raw.githubusercontent.com/wiki/compdyn/partmc/logo.svg)
+![PartMC](https://raw.githubusercontent.com/wiki/compdyn/partmc/logo.svg )
 ======
 
 PartMC: Particle-resolved Monte Carlo code for atmospheric aerosol simulation
